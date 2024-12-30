@@ -3,7 +3,8 @@
     "type": "module",
     "scripts": {
         "build": "vite build",
-        "dev": "vite"
+        "dev": "vite",
+        "sass": "sass --watch resources/assets/sass/main.scss:public/assets/styles/css/main.css --style compressed"
     },
     "devDependencies": {
         "autoprefixer": "^10.4.20",
