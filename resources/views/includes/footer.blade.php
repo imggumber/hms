@@ -1,3 +1,3 @@
-<footer>
-  this is footer file
-</footer>
+<div class="footer">
+  this is footer area
+</div>
