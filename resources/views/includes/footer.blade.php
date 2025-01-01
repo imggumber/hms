@@ -1,3 +1,3 @@
 <div class="footer">
-  this is footer area
+    this is footer area
 </div>
