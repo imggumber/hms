@@ -2,7 +2,8 @@
     <div>
         <h1 class="text-4xl mb-6">HMS</h1>
         <div class="sidebar__content h-full relative">
-            content area
+            <!-- Sidebar content -->
+            <x-common.sidebar-component />
         </div>
     </div>
     <footer>
