@@ -23,31 +23,4 @@
         <span class="ms-3 px-2 py-1 rounded-2xl bg-green-400 text-xs font-semibold">+15.2%</span>
     </div>
 
-    <div>
-        <canvas class="myChart"></canvas>
-    </div>
 </div>
-
-
-<script>
-    const ctx = document.getElementsByClassName('myChart');
-
-    new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-            datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
-</script>
