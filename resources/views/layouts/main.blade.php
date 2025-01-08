@@ -22,7 +22,7 @@
         <header class="shadow-lg rounded-md  bg-white p-3">
             @include('includes.header')
         </header>
-        <aside class="sidebar shadow-lg rounded-md row-start-1 row-end-4 p-3 bg-white">
+        <aside class="sidebar shadow-lg rounded-md row-start-1 row-end-4 p-3 overflow-y-auto overflow-x-hidden bg-white">
             @include('includes.sidebar')
         </aside>
         <main class="h-full shadow-lg rounded-md row-start-2 row-end-4 p-3 bg-white">

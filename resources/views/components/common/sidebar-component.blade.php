@@ -1,6 +1,6 @@
-<div class="sidebar">
+<div class="sidebar text-left">
     <!-- Main menu -->
-    <div class="text-left mt-6 mb-3 relative">
+    <div class="mt-6 mb-3 relative">
         <span class="text-xs text-gray-500">Main Menu</span><span class="relative inline-block top-0 left-2 border w-20"></span>
     </div>
     <ul class="space-y-2 text-sm font-medium">
@@ -30,7 +30,7 @@
         </li>
     </ul>
     <!-- Staff and Inventory -->
-    <div class="text-left mt-6 mb-3 relative">
+    <div class="mt-6 mb-3 relative">
         <span class="text-xs text-gray-500">Staff & Inventory</span><span class="relative inline-block top-0 left-2 border w-20"></span>
     </div>
     <ul class="space-y-2 text-sm font-medium">
@@ -76,7 +76,7 @@
         </li>
     </ul>
     <!-- Help and Report -->
-    <div class="text-left mt-6 mb-3 relative">
+    <div class="mt-6 mb-3 relative">
         <span class="text-xs text-gray-500">Help & Report</span><span class="relative inline-block top-0 left-2 border w-20"></span>
     </div>
     <ul class="space-y-2 text-sm font-medium">
