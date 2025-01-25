@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Schema;
 
 class Helpers
 {
-    public static function seedDepartments($departments = [], $table_name)
+    public static function seedDepartments($departments, $table_name)
     {
         $status = false;
 
