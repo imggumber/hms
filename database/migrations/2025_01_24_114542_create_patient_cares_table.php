@@ -13,8 +13,12 @@ return new class extends Migration
     {
         Schema::create('patient_cares', function (Blueprint $table) {
             $table->id();
-            $table->string('department');
+            $table->string('sub_department');
+            $table->unsignedBigInteger('department_id');
             $table->timestamps();
+
+            // Define foreign key
+            $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');
         });
     }
 

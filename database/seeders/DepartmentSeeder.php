@@ -13,15 +13,12 @@ class DepartmentSeeder extends Seeder
      */
     public function run(): void
     {
-        //Administration seed
-        $administrations = [
-            'Management',
-            'Human Resources',
-            'Finance and Billing',
-            'IT Department',
-            'Legal and Compliance',
-            'Public Relations',
+        // Departments seed
+        $departments = [
+            'Administrations',
+            'Operations',
+            'Patient Care'
         ];
-        Helpers::seedDepartments($administrations, 'administratives');
+        Helpers::seedDepartments($departments, 'departments');
     }
 }
