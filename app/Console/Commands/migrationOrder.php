@@ -32,6 +32,12 @@ class migrationOrder extends Command
 
         try {
             // Migrate the roles table
+            if (!Schema::hasTable('designations')) {
+                Artisan::call('migrate', ['--path' => 'database/migrations/2025_02_01_085339_create_designations_table.php']);
+                $this->info('Designation migrated successfully.');
+            }
+            
+            // Migrate the roles table
             if (!Schema::hasTable('roles')) {
                 Artisan::call('migrate', ['--path' => 'database/migrations/2025_02_01_072107_create_roles_table.php']);
                 $this->info('Roles table migrated successfully.');
