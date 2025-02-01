@@ -14,7 +14,7 @@ class RoleSeeder extends Seeder
   {
 
     $table_name = 'roles';
-    $$table_column = 'role';
+    $table_column = 'role';
     $roles = [
       'Owner',
       'Admin',
