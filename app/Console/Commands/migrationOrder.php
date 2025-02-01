@@ -38,21 +38,27 @@ class migrationOrder extends Command
         $this->info('Roles table migrated successfully.');
       }
 
-      // Migrate the blood group table
+      // Migrate the blood groups table
       if (!Schema::hasTable('blood_groups')) {
         Artisan::call('migrate', ['--path' => 'database/migrations/2025_02_01_074343_create_blood_groups_table.php']);
         Artisan::call('db:seed', ['--class' => 'BloodGroupSeeder']);
         $this->info('Blood group table migrated successfully.');
       }
 
-      // Migrate the companies table
+      // Migrate the departments table
       if (!Schema::hasTable('departments')) {
         Artisan::call('migrate', ['--path' => 'database/migrations/2025_01_26_061811_create_departments_table.php']);
         Artisan::call('db:seed', ['--class' => 'BloodGroupSeeder']);
         $this->info('Departments table migrated successfully.');
       }
+
+      // Migrate the sub departments table
+      if (!Schema::hasTable('sub_departments')) {
+        Artisan::call('migrate', ['--path' => 'database/migrations/2025_02_01_093153_create_sub_departments_table.php']);
+        $this->info('Sub-departments table migrated successfully.');
+      }
       
-      // Migrate the designation table
+      // Migrate the designations table
       if (!Schema::hasTable('designations')) {
         Artisan::call('migrate', ['--path' => 'database/migrations/2025_02_01_085339_create_designations_table.php']);
         Artisan::call('db:seed', ['--class' => 'DepartmentSeeder']);
