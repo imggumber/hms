@@ -12,17 +12,15 @@ class DepartmentSeeder extends Seeder
      */
     public function run(): void
     {
-        // Departments seed
+        
+        $table_name = 'departments';
+        $table_column = 'department';
         $departments = [
             'Administrations',
             'Operations',
             'Patient Care'
         ];
-
-        // Migrate departments
-        $table_name = 'departments';
-        $table_column = 'department';
-
+        
         $seed = new Helpers();
         $seed->seedData($departments, $table_name, $table_column);
     }
