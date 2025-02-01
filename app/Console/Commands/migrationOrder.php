@@ -31,40 +31,56 @@ class migrationOrder extends Command
     $this->info('Starting migration process');
 
     try {
-      // Migrate the roles table
+      /**
+       * Independent tables
+       */
+
       if (!Schema::hasTable('roles')) {
         Artisan::call('migrate', ['--path' => 'database/migrations/2025_02_01_072107_create_roles_table.php']);
         Artisan::call('db:seed', ['--class' => 'RoleSeeder']);
         $this->info('Roles table migrated successfully.');
       }
 
-      // Migrate the blood groups table
       if (!Schema::hasTable('blood_groups')) {
         Artisan::call('migrate', ['--path' => 'database/migrations/2025_02_01_074343_create_blood_groups_table.php']);
         Artisan::call('db:seed', ['--class' => 'BloodGroupSeeder']);
         $this->info('Blood group table migrated successfully.');
       }
 
-      // Migrate the departments table
       if (!Schema::hasTable('departments')) {
         Artisan::call('migrate', ['--path' => 'database/migrations/2025_01_26_061811_create_departments_table.php']);
-        Artisan::call('db:seed', ['--class' => 'BloodGroupSeeder']);
+        Artisan::call('db:seed', ['--class' => 'DepartmentSeeder']);
         $this->info('Departments table migrated successfully.');
       }
 
-      // Migrate the sub departments table
+      if (!Schema::hasTable('designations')) {
+        Artisan::call('migrate', ['--path' => 'database/migrations/2025_02_01_085339_create_designations_table.php']);
+        $this->info('Designation migrated successfully.');
+      }
+
+      if (!Schema::hasTable('payment_statuses')) {
+        Artisan::call('migrate', ['--path' => 'database/migrations/2025_02_01_114027_create_payment_statuses_table.php']);
+        Artisan::call('db:seed', ['--class' => 'PaymentStatusSeeder']);
+        $this->info('Payment status migrated successfully.');
+      }
+      
+      if (!Schema::hasTable('payment_methods')) {
+        Artisan::call('migrate', ['--path' => 'database/migrations/2025_02_01_114720_create_payment_methods_table.php']);
+        Artisan::call('db:seed', ['--class' => 'PaymentMethodSeeder']);
+        $this->info('Payment methods migrated successfully.');
+      }
+
+      /**
+       * Dependent tables
+       */
       if (!Schema::hasTable('sub_departments')) {
         Artisan::call('migrate', ['--path' => 'database/migrations/2025_02_01_093153_create_sub_departments_table.php']);
         $this->info('Sub-departments table migrated successfully.');
       }
-      
-      // Migrate the designations table
-      if (!Schema::hasTable('designations')) {
-        Artisan::call('migrate', ['--path' => 'database/migrations/2025_02_01_085339_create_designations_table.php']);
-        Artisan::call('db:seed', ['--class' => 'DepartmentSeeder']);
-        $this->info('Designation migrated successfully.');
-      }
 
+      /**
+       * Default tables
+       */
       Artisan::call('migrate');
       $this->info('All migrations completed.');
     } catch (\Exception $e) {
