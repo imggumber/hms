@@ -2,35 +2,45 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use Carbon\Carbon;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Schema;
 
-class DepartmentSeeder extends Seeder
+class BloodGroupSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
-    public function run(): void
+    public function run()
     {
+
+        $table_name = 'blood_groups';
+
         // Departments seed
-        $departments = [
-            'Administrations',
-            'Operations',
-            'Patient Care'
+        $bloodgroups = [
+            'A+',
+            'A-',
+            'B+',
+            'B-',
+            'O+',
+            'O-',
+            'AB+',
+            'AB-',
         ];
 
-        // Migrate departments
-        $table_name = 'departments';
+        $status = false;
+
+        // Check if has table
         if (Schema::hasTable($table_name)) {
 
             DB::beginTransaction();
             try {
-                foreach ($departments as $department) {
+                foreach ($bloodgroups as $bloodgroup) {
                     DB::table($table_name)->insert([
-                        'department' => $department,
+                        'blood_group' => $bloodgroup,
                         'created_at' => Carbon::now()
                     ]);
                 }
@@ -41,5 +51,6 @@ class DepartmentSeeder extends Seeder
                 Log::emergency($e->getMessage());
             }
         }
+        return $status;
     }
 }

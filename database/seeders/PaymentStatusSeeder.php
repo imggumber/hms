@@ -2,13 +2,13 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use Carbon\Carbon;
+use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Schema;
 
-class DepartmentSeeder extends Seeder
+class PaymentStatusSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,21 +16,21 @@ class DepartmentSeeder extends Seeder
     public function run(): void
     {
         // Departments seed
-        $departments = [
-            'Administrations',
-            'Operations',
-            'Patient Care'
+        $statuses = [
+            'Pending',
+            'Success',
+            'Failed'
         ];
 
         // Migrate departments
-        $table_name = 'departments';
+        $table_name = 'payment_statuses';
         if (Schema::hasTable($table_name)) {
 
             DB::beginTransaction();
             try {
-                foreach ($departments as $department) {
+                foreach ($statuses as $st) {
                     DB::table($table_name)->insert([
-                        'department' => $department,
+                        'payment_status' => $st,
                         'created_at' => Carbon::now()
                     ]);
                 }
