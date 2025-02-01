@@ -3,11 +3,10 @@
 namespace Database\Seeders;
 
 use Carbon\Carbon;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Schedule;
+use Illuminate\Support\Facades\Schema;
 
 class GenderSeeder extends Seeder
 {
@@ -25,7 +24,7 @@ class GenderSeeder extends Seeder
 
         // Migrate departments
         $table_name = 'genders';
-        if (Schedule::hasTable($table_name)) {
+        if (Schema::hasTable($table_name)) {
 
             DB::beginTransaction();
             try {
@@ -36,7 +35,6 @@ class GenderSeeder extends Seeder
                     ]);
                 }
                 DB::commit();
-                $status = true;
             } catch (\Exception $e) {
                 DB::rollBack();
                 Log::emergency($e->getMessage());

@@ -34,6 +34,11 @@ class migrationOrder extends Command
       /**
        * Independent tables
        */
+      if (!Schema::hasTable('genders')) {
+        Artisan::call('migrate', ['--path' => 'database/migrations/2025_02_01_132325_create_genders_table.php']);
+        Artisan::call('db:seed', ['--class' => 'GenderSeeder']);
+        $this->info('Genders table migrated successfully.');
+      }
 
       if (!Schema::hasTable('roles')) {
         Artisan::call('migrate', ['--path' => 'database/migrations/2025_02_01_072107_create_roles_table.php']);
