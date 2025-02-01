@@ -31,6 +31,12 @@ class migrationOrder extends Command
         $this->info('Starting migration process');
 
         try {
+            // Migrate the roles table
+            if (!Schema::hasTable('roles')) {
+                Artisan::call('migrate', ['--path' => 'database/migrations/2025_02_01_072107_create_roles_table.php']);
+                $this->info('Roles table migrated successfully.');
+            }
+
             // Migrate the companies table
             if (!Schema::hasTable('departments')) {
                 Artisan::call('migrate', ['--path' => 'database/migrations/2025_01_26_061811_create_departments_table.php']);
@@ -58,6 +64,10 @@ class migrationOrder extends Command
             // Seed default departments
             Artisan::call('db:seed', ['--class' => 'DepartmentSeeder']);
             $this->info('Departments seeded successfully.');
+            
+            // Seed default roles
+            Artisan::call('db:seed', ['--class' => 'RoleSeeder']);
+            $this->info('Roles seeded successfully.');
 
             Artisan::call('migrate');
             $this->info('All migrations completed.');
