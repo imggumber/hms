@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('email');
             $table->longText('address');
             $table->string('emergency_contact');
-            $table->string('emergency_contact');
             $table->timestamps();
         });
     }

@@ -36,6 +36,12 @@ class migrationOrder extends Command
                 Artisan::call('migrate', ['--path' => 'database/migrations/2025_02_01_072107_create_roles_table.php']);
                 $this->info('Roles table migrated successfully.');
             }
+            
+            // Migrate the blood group table
+            if (!Schema::hasTable('blood_groups')) {
+                Artisan::call('migrate', ['--path' => 'database/migrations/2025_02_01_074343_create_blood_groups_table.php']);
+                $this->info('Blood group table migrated successfully.');
+            }
 
             // Migrate the companies table
             if (!Schema::hasTable('departments')) {
@@ -68,6 +74,10 @@ class migrationOrder extends Command
             // Seed default roles
             Artisan::call('db:seed', ['--class' => 'RoleSeeder']);
             $this->info('Roles seeded successfully.');
+            
+            // Seed default roles
+            Artisan::call('db:seed', ['--class' => 'BloodGroupSeeder']);
+            $this->info('Blood group seeded successfully.');
 
             Artisan::call('migrate');
             $this->info('All migrations completed.');
