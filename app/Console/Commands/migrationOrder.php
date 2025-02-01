@@ -82,6 +82,16 @@ class migrationOrder extends Command
         Artisan::call('migrate', ['--path' => 'database/migrations/2025_02_01_093153_create_sub_departments_table.php']);
         $this->info('Sub-departments table migrated successfully.');
       }
+      
+      if (!Schema::hasTable('users')) {
+        Artisan::call('migrate', ['--path' => 'database/migrations/0001_01_01_000000_create_users_table.php']);
+        $this->info('Users table migrated successfully.');
+      }
+      
+      if (!Schema::hasTable('profiles')) {
+        Artisan::call('migrate', ['--path' => 'database/migrations/2025_02_01_152555_create_profiles_table.php']);
+        $this->info('Sub-departments table migrated successfully.');
+      }
 
       /**
        * Default tables
