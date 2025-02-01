@@ -83,7 +83,7 @@ class migrationOrder extends Command
         $this->info('Sub-departments table migrated successfully.');
       }
       
-      if (!Schema::hasTable('users')) {
+      if (!Schema::hasTable('users')) { 
         Artisan::call('migrate', ['--path' => 'database/migrations/0001_01_01_000000_create_users_table.php']);
         $this->info('Users table migrated successfully.');
       }

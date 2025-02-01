@@ -2,11 +2,8 @@
 
 namespace Database\Seeders;
 
-use Carbon\Carbon;
+use app\Helpers\Helpers;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Schema;
 
 class RoleSeeder extends Seeder
 {
@@ -17,8 +14,7 @@ class RoleSeeder extends Seeder
   {
 
     $table_name = 'roles';
-
-    // Departments seed
+    $table_column = 'role';
     $roles = [
       'Owner',
       'Admin',
@@ -26,26 +22,7 @@ class RoleSeeder extends Seeder
       'Guest',
     ];
 
-    $status = false;
-
-    // Check if has table
-    if (Schema::hasTable($table_name)) {
-
-      DB::beginTransaction();
-      try {
-        foreach ($roles as $role) {
-          DB::table($table_name)->insert([
-            'role' => $role,
-            'created_at' => Carbon::now()
-          ]);
-        }
-        DB::commit();
-        $status = true;
-      } catch (\Exception $e) {
-        DB::rollBack();
-        Log::emergency($e->getMessage());
-      }
-    }
-    return $status;
+    $seed = new Helpers();
+    $seed->seedData($roles, $table_name, $table_column);
   }
 }
