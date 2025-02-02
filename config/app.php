@@ -27,6 +27,7 @@ return [
     */
 
     'env' => env('APP_ENV', 'production'),
+    'table_prefix' => env('DB_TABLE_PREFIX', ''),
 
     /*
     |--------------------------------------------------------------------------
